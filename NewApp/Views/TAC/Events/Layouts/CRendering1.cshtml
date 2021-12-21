@@ -1,0 +1,27 @@
+﻿@using Sitecore.Mvc
+@using Sitecore.Mvc.Analytics.Extensions
+@using Sitecore.Mvc.Presentation
+@model RenderingModel
+@{
+    Layout = null;
+    Sitecore.Data.Database master = Sitecore.Configuration.Factory.GetDatabase("master");
+
+    Sitecore.Data.Items.Item home = master.GetItem("/sitecore/content/Home/View1-Controllerrendering");
+    string header = home["Html Header"];
+    string body= home["Html Body"];
+    string content = home["html content"];
+}
+<!DOCTYPE html>
+<html>
+<head>
+  @*<title>@Html.Sitecore().Field("title", new { DisableWebEdit = true })</title>*@
+  @Html.Sitecore().VisitorIdentification()
+</head>
+  <body>
+    <h1>@header</h1>
+    <div>
+        <p>@body</p>
+        <p>@content</p>
+    </div>
+  </body>
+</html>

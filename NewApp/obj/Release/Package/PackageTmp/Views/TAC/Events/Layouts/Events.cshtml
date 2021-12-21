@@ -1,0 +1,44 @@
+﻿@using Sitecore.Mvc
+
+@using Sitecore.Mvc.Presentation
+@model RenderingModel
+@{
+    Layout = null;
+    Sitecore.Data.Database master = Sitecore.Configuration.Factory.GetDatabase("master");
+
+    Sitecore.Data.Items.Item home = master.GetItem("/sitecore/content/Home/details");
+
+    string title = home["ContentHeading"];
+}
+<!DOCTYPE html>
+<html>
+<head>
+    @*<title>@Html.Sitecore().Field("title", new { DisableWebEdit = true })</title>*@
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+</head>
+<body>
+    @*<h1>@Html.Sitecore().Field("title")</h1>
+        <div>
+          @Html.Sitecore().Placeholder("main")
+        </div>*@
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="#">WebSiteName</a>
+            </div>
+            <ul class="nav navbar-nav">
+                <li class="active"><a href="/">Home</a></li>
+                <li><a href="#/home/Events">Events</a></li>
+                <li><a href="#">Page 2</a></li>
+                <li><a href="#">Page 3</a></li>
+            </ul>
+        </div>
+    </nav>
+    @Html.Sitecore().Rendering("{D5B4713F-B8DA-426D-9959-2BBFCA6CA02D}");
+</body>
+</html>

@@ -1,0 +1,19 @@
+﻿@model RenderingModel
+@*@{
+        Sitecore.Data.Database master = Sitecore.Configuration.Factory.GetDatabase("master");
+
+        Sitecore.Data.Items.Item home = master.GetItem("/sitecore/content/Home");
+
+        string title =  home["ContentHeading"];
+        string details = home["Description"];
+    }*@
+<div class="container-fluid " style="margin-top:40px;">
+    <div> <h2>@Html.Sitecore().Field("Question")</h2>   </div>
+
+
+    <br />
+    <div>
+        <p> @Html.Sitecore().Field("Answer")</p>
+
+    </div>
+</div>
